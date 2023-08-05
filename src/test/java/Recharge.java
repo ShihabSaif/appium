@@ -21,17 +21,20 @@ public class Recharge {
 
         Thread.sleep(2000);
 
-        WebElement mobileRecharge = driver.findElement(By.id("com.progoti.tallykhata:id/cl_mobile_recharge"));
+        WebElement mobileRecharge = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.ImageView"));
         mobileRecharge.click();
 
         Thread.sleep(2000);
 
-        WebElement selectPhoneNo = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[4]/android.view.ViewGroup/android.widget.LinearLayout"));
-        selectPhoneNo.click();
+        WebElement phoneNoInput = driver.findElement(By.id("com.progoti.tallykhata:id/etNumberInput"));
+        phoneNoInput.sendKeys("01765841854");
 
         Thread.sleep(2000);
 
-        WebElement thikAseButton = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.Button"));
+        WebElement nextButton = driver.findElement(By.id("com.progoti.tallykhata:id/btnNextTW"));
+        nextButton.click();
+
+        WebElement thikAseButton = driver.findElement(By.id("com.progoti.tallykhata:id/btnOk"));
         thikAseButton.click();
 
         WebElement amountField = driver.findElement(By.id("com.progoti.tallykhata:id/etTkInput"));
@@ -42,10 +45,23 @@ public class Recharge {
 
         Thread.sleep(2000);
 
-        WebElement pinInput = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText"));
+        WebElement pinInput = driver.findElement(By.id("com.progoti.tallykhata:id/etPinInput"));
         pinInput.sendKeys("1590");
 
         WebElement nischitButton = driver.findElement(By.id("com.progoti.tallykhata:id/btnNext"));
         nischitButton.click();
+
+        Thread.sleep(5000);
+
+        WebElement rechargeSuccess = driver.findElement(By.id("com.progoti.tallykhata:id/successTitle"));
+        System.out.println("Recharge final screen : " + rechargeSuccess.getText());
+
+        if (rechargeSuccess.getText().equals("মোবাইল রিচার্জ সফল হয়েছে।"))
+        {
+            System.out.println("Recharge Success");
+        }
+        else {
+            System.out.println("Recharge Failed");
+        }
     }
 }

@@ -19,7 +19,7 @@ public class sendMoney {
 
         Thread.sleep(3000);
 
-        WebElement sendMoneyButton = driver.findElement(By.id("com.progoti.tallykhata:id/img_taka_pathay"));
+        WebElement sendMoneyButton = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]/android.widget.ImageView"));
         sendMoneyButton.click();
 
         Thread.sleep(2000);
@@ -41,9 +41,22 @@ public class sendMoney {
         Thread.sleep(2000);
 
         WebElement pinInput = driver.findElement(By.id("com.progoti.tallykhata:id/etPinInput"));
-        pinInput.sendKeys("1212");
+        pinInput.sendKeys("1590");
 
         WebElement nischitButton = driver.findElement(By.id("com.progoti.tallykhata:id/btnConfirm"));
         nischitButton.click();
+
+        Thread.sleep(5000);
+
+        WebElement sendMoneySuccess = driver.findElement(By.id("com.progoti.tallykhata:id/successTitle"));
+        System.out.println("Send Money final screen : " + sendMoneySuccess.getText());
+
+        if (sendMoneySuccess.getText().equals("সেন্ড মানি সফল হয়েছে।"))
+        {
+            System.out.println("Send Money Success");
+        }
+        else {
+            System.out.println("Send Money Failed");
+        }
     }
 }
